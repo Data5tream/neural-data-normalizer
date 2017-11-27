@@ -1,6 +1,6 @@
 # A simple data normalizer to be used with neural networks
 
-As my grandfather used to say (probably), **neural networks** are dumb. When they're born and when you need to train them just to see how all the magic works, its a pain in the... neck.
+## This is a plain Javascript version of @adadgio's [neural-data-normalizer](https://github.com/adadgio/neural-data-normalizer)
 
 This is library **convert datasets of human data** into **arrays of bits** understandable for neurons (duh).
 
@@ -9,7 +9,7 @@ This script was made when i tested the awesome [synaptic.js](https://github.com/
 
 ## Cut the crap, show me how to
 
-Consider this. I'm trying to plug a neural network into my Arduino Connected Garden and i've got the following data. I want my network to know when or when not to water my plants on its own (whatever the units are for now).
+Consider this. I'm trying to plug a neural network into my Arduino Connected Garden and I've got the following data. I want my network to know when or when not to water my plants on its own (whatever the units are for now).
 
 ```json
 { "soilhumidity": 500, "airtemp": 32, "airhum": 18, "water": true, "plants": ["tomatoes", "potatoes"] },
@@ -22,7 +22,7 @@ Consider this. I'm trying to plug a neural network into my Arduino Connected Gar
 
 In the end, my output is "should i water the plants?": `water: true` and the rest are my inputs. Let's do this.
 
-```ts
+```js
 const normalizer = new Normalizer(sampleData);
 
 // setting required options and normalize the data
@@ -72,11 +72,11 @@ $ (console output)
 Consider  a real example where you actually started to understand what are neural networks and start implementing it. You realize the biggest challenge is data formatting. When you **activate Alfred** with you data (i always call my network Alfred)
 you realize you also need to **normalize the new data input** as well.
 
-So you need to save metadata information that you got earlier (mins, maxes, ets) so that our data normalizer here converts the new inputs to the same scales! (this implies training data MUST contain min and maxes values at some point).
+So you need to save metadata information that you got earlier (mins, maxes, etc) so that our data normalizer here converts the new inputs to the same scales! (this implies training data MUST contain min and maxes values at some point).
 
-Then on new unkown input you just have to recall the normalizer one thing: *metadata of known values* range.
+Then on new unknown input you just have to recall the normalizer one thing: *metadata of known values* range.
 
-```
+```js
 const normalizer = new Normalizer(newData);
 
 normalizer

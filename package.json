@@ -1,6 +1,6 @@
 {
   "name": "neural-data-normalizer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Data to bits normalization helpers script to use with neural network.",
   "repository": "https://github.com/data5tream/neural-data-normalizer",
   "main": "dist/normalizer.js",
