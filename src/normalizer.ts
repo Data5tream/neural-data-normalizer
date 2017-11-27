@@ -3,7 +3,7 @@
  *
  * @author Romain Bruckert
  */
-export type RowInput = {
+type RowInput = {
     [prop: string]: string|number|Array<string|number>|boolean;
 };
 
@@ -12,7 +12,7 @@ function isArray(input: any)
     return ( Object.prototype.toString.call(input) === '[object Array]' ) ? true : false;
 }
 
-export class Normalizer
+class Normalizer
 {
     private dataset: Array<RowInput|any> = [];
     private datasetMeta: any = null;                  // training meta data (ranges, min, max, etc)
@@ -23,7 +23,7 @@ export class Normalizer
     constructor(data: Array<RowInput> = [])
     {
         this.dataset = data;
-        
+
         // prevent empty data input
         if (this.dataset.length <= 0 ) {
             throw new Error(`Normalizer input data shouldn't be empty`);
